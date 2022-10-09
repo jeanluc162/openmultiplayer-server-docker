@@ -1,0 +1,14 @@
+FROM --platform=arm64 debian:stable-slim
+
+ADD https://github.com/openmultiplayer/server-beta/releases/download/build10/open.mp-linux-arm.tar.xz /opt/openmultiplayer/open.mp-linux-arm.tar.xz
+
+RUN dpkg --add-architecture armhf && \
+    apt-get update && \
+    apt-get -y upgrade && \
+    apt-get -y install xz-utils libc6:armhf libstdc++6:armhf libgcc-s1:armhf libncurses6:armhf zlib1g:armhf && \
+    cd /opt/openmultiplayer && \
+    tar -xf open.mp-linux-arm.tar.xz && \
+    rm open.mp-linux-arm.tar.xz
+
+ENTRYPOINT cd /opt/openmultiplayer/Server && \
+           ./omp-server
