@@ -27,7 +27,7 @@ jobs:
         with:
           platforms: linux/amd64
           push: true
-          tags: jeanluc162/openmultiplayer-server:${{ github.ref_name }}
+          tags: jeanluc162/openmultiplayer-server:${{ github.ref_name }}-amd64
           file: Dockerfile.amd64
       -
         name: Build and push arm64
@@ -35,5 +35,12 @@ jobs:
         with:
           platforms: linux/arm64
           push: true
-          tags: jeanluc162/openmultiplayer-server:${{ github.ref_name }}
+          tags: jeanluc162/openmultiplayer-server:${{ github.ref_name }}-arm64
           file: Dockerfile.arm64
+      - 
+        name: Create and push manifest images
+        uses: Noelware/docker-manifest-action@master
+        with:
+          base-image: jeanluc162/openmultiplayer-server:${{ github.ref_name }}
+          extra-images: jeanluc162/openmultiplayer-server:${{ github.ref_name }}-amd64,jeanluc162/openmultiplayer-server:${{ github.ref_name }}-arm64
+          push: true
