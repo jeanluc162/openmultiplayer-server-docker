@@ -28,7 +28,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: jeanluc162/openmultiplayer-server:${{ github.ref_name }}
-          file: {context}/Dockerfile.amd64
+          file: Dockerfile.amd64
       -
         name: Build and push arm64
         uses: docker/build-push-action@v3.1.1
@@ -36,4 +36,4 @@ jobs:
           platforms: linux/arm64
           push: true
           tags: jeanluc162/openmultiplayer-server:${{ github.ref_name }}
-          file: {context}/Dockerfile.arm64
+          file: Dockerfile.arm64
