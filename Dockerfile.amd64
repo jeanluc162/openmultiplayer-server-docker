@@ -1,6 +1,6 @@
 FROM --platform=amd64 debian:stable-20221004-slim
 
-ADD https://github.com/openmultiplayer/server-beta/releases/download/build10/open.mp-linux-x86.tar.gz /opt/openmultiplayer/open.mp-linux-x86.tar.gz
+ADD https://github.com/openmultiplayer/server-beta/releases/download/build11/open.mp-linux-x86.tar.gz /opt/openmultiplayer/open.mp-linux-x86.tar.gz
 
 RUN apt-get update && \
     apt-get -y upgrade && \
